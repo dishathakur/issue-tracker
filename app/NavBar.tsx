@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const NavBar = () => {
@@ -11,13 +12,13 @@ const NavBar = () => {
         {/* nav links */}
         <ul tabIndex={0} className="flex flex-row gap-6">
           <li>
-            <a>Homepage</a>
+            <Link href={"/"}>Home</Link>
           </li>
           <li>
-            <a>Portfolio</a>
+            <Link href={"/issue"}>Issues</Link>
           </li>
           <li>
-            <a>About</a>
+            <Link href={"/new"}>New Issue</Link>
           </li>
         </ul>
         {/* search icon */}
