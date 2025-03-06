@@ -5,9 +5,9 @@ const NavBar = () => {
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
-        <a className="btn btn-ghost text-xl">Issue Tracker</a>
+        <p className="btn btn-ghost text-xl">Issue Tracker</p>
       </div>
-      <div className="navbar-center">Welcome User</div>
+      <div className="navbar-center text-xl">Welcome User</div>
       <div className="navbar-end gap-2">
         {/* nav links */}
         <ul tabIndex={0} className="flex flex-row gap-6">
@@ -18,7 +18,7 @@ const NavBar = () => {
             <Link href={"/issue"}>Issues</Link>
           </li>
           <li>
-            <Link href={"/new"}>New Issue</Link>
+            <Link href={"/admin"}>Profile</Link>
           </li>
         </ul>
         {/* search icon */}
