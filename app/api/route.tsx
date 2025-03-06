@@ -1,11 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../client";
 
-// interface Issue {
-//   title: String;
-//   description: String;
-// }
-
 export async function GET(request: NextRequest) {
   const issue = await prisma.issue.findMany();
   return NextResponse.json(issue);
