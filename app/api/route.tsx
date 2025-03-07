@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../client";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   const issue = await prisma.issue.findMany();
   return NextResponse.json(issue);
 }
