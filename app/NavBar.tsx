@@ -18,7 +18,7 @@ const NavBar = () => {
             <Link href={"/issue"}>Issues</Link>
           </li>
           <li>
-            <Link href={"/admin"}>Profile</Link>
+            <Link href={"/admin"}>Dashboard</Link>
           </li>
         </ul>
         {/* search icon */}

@@ -1,6 +1,6 @@
-import React from "react";
 import { prisma } from "../client";
-
+import Button from "../components/button";
+import { redirect } from "next/navigation";
 interface Issue {
   id: number;
   title: string;
@@ -12,11 +12,16 @@ interface Issue {
 const IssuePage = async () => {
   const issue: Issue[] = await prisma.issue.findMany();
 
+  const handleCreateNewIssue = async () => {
+    "use server";
+
+    await redirect("/newIssue");
+  };
   return (
     <>
       <div className="flex flex-row justify-between">
         <div className="text-2xl text-start pb-5">Issues List</div>
-        <button className="btn btn-soft">Create New Issue</button>
+        <Button text="Create New Issue" onclick={handleCreateNewIssue} />
       </div>
 
       <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 w-1/2">
