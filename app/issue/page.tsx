@@ -1,6 +1,7 @@
 import { prisma } from "../client";
 import Button from "../components/button";
 import { redirect } from "next/navigation";
+
 interface Issue {
   id: number;
   title: string;
@@ -9,14 +10,13 @@ interface Issue {
   updatedAt: Date;
 }
 
-const IssuePage = async () => {
-  const issue: Issue[] = await prisma.issue.findMany();
-
+const IssuePage = ({ issues }: { issues: Issue[] }) => {
   const handleCreateNewIssue = async () => {
     "use server";
 
     await redirect("/newIssue");
   };
+
   return (
     <>
       <div className="flex flex-row justify-between">
@@ -36,11 +36,11 @@ const IssuePage = async () => {
           </thead>
           {/* table body */}
           <tbody>
-            {issue!.map((i) => (
+            {issues.map((i) => (
               <tr key={i.id}>
-                <th>{i.id!}</th>
-                <td>{i.title!}</td>
-                <td>{i.description!}</td>
+                <th>{i.id}</th>
+                <td>{i.title}</td>
+                <td>{i.description}</td>
               </tr>
             ))}
           </tbody>
@@ -49,5 +49,12 @@ const IssuePage = async () => {
     </>
   );
 };
+
+export async function getServerSideProps() {
+  const issues = await prisma.issue.findMany(); // Fetch data from the database
+  return {
+    props: { issues }, // Pass the fetched data as props
+  };
+}
 
 export default IssuePage;
