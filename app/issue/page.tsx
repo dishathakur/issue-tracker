@@ -10,9 +10,12 @@ interface Issue {
   updatedAt: Date;
 }
 
+export const dynamic = "force-dynamic";
+
 const IssuePage = async () => {
   // Fetch data from the database directly inside the server component
   const issues: Issue[] = await prisma.issue.findMany();
+  console.log(issues);
 
   const handleCreateNewIssue = async () => {
     // Redirect to the "newIssue" page
