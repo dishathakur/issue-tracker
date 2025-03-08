@@ -12,13 +12,13 @@ const NavBar = () => {
         {/* nav links */}
         <ul tabIndex={0} className="flex flex-row gap-6">
           <li>
-            <Link href={"/"}>Home</Link>
+            <Link href={"/"}>Dashboard</Link>
           </li>
           <li>
             <Link href={"/issue"}>Issues</Link>
           </li>
           <li>
-            <Link href={"/admin"}>Dashboard</Link>
+            <Link href={"/profile"}>Profile</Link>
           </li>
         </ul>
         {/* search icon */}
