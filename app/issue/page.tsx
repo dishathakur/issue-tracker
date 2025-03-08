@@ -1,6 +1,6 @@
-import { prisma } from "../client";
-import Button from "../components/button";
-import { redirect } from "next/navigation";
+import { prisma } from "../client"; // Your prisma client
+import Button from "../components/button"; // Your Button component
+import { redirect } from "next/navigation"; // For redirection
 
 interface Issue {
   id: number;
@@ -10,10 +10,13 @@ interface Issue {
   updatedAt: Date;
 }
 
-const IssuePage = ({ issues }: { issues: Issue[] }) => {
-  const handleCreateNewIssue = async () => {
-    "use server";
+const IssuePage = async () => {
+  // Fetch data from the database directly inside the server component
+  const issues: Issue[] = await prisma.issue.findMany();
 
+  const handleCreateNewIssue = async () => {
+    // Redirect to the "newIssue" page
+    "use server"; // This marks this function as a server action
     await redirect("/newIssue");
   };
 
@@ -49,12 +52,5 @@ const IssuePage = ({ issues }: { issues: Issue[] }) => {
     </>
   );
 };
-
-export async function getServerSideProps() {
-  const issues = await prisma.issue.findMany(); // Fetch data from the database
-  return {
-    props: { issues }, // Pass the fetched data as props
-  };
-}
 
 export default IssuePage;
